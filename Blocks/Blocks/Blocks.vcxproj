@@ -82,11 +82,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Button.cpp" />
+    <ClCompile Include="src\Cube.cpp" />
     <ClCompile Include="src\Font.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameOverState.cpp" />
     <ClCompile Include="src\GameState.cpp" />
     <ClCompile Include="src\InputHandler.cpp" />
+    <ClCompile Include="src\IShape.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MenuState.cpp" />
     <ClCompile Include="src\PlayState.cpp" />
@@ -94,11 +96,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Button.h" />
+    <ClInclude Include="src\Cube.h" />
     <ClInclude Include="src\Font.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GameOverState.h" />
     <ClInclude Include="src\GameState.h" />
     <ClInclude Include="src\InputHandler.h" />
+    <ClInclude Include="src\IShape.h" />
     <ClInclude Include="src\MenuState.h" />
     <ClInclude Include="src\PlayState.h" />
     <ClInclude Include="src\StateManager.h" />

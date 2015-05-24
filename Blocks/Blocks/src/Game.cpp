@@ -39,7 +39,7 @@ bool Game::init()
 
 
 		//Create window
-		pSDLWindow_ = SDL_CreateWindow("Pong", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+		pSDLWindow_ = SDL_CreateWindow("Blocks", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 		if (pSDLWindow_ == nullptr)
 		{
 			printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
@@ -90,7 +90,6 @@ bool Game::initGL()
 	//Initialize Projection Matrix
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-
 	//Check for error
 	error = glGetError();
 	if (error != GL_NO_ERROR)

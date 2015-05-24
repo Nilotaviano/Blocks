@@ -1,11 +1,13 @@
 #include "PlayState.h"
+#include "GameOverState.h"
+#include "Cube.h"
+
 #include <SDL.h>
 #include <SDL_opengl.h>
-#include "GameOverState.h"
+#include <GL\GLU.h>
 
 PlayState::PlayState(StateManager* pManager)
 :GameState(pManager)
-//bar1(0.0f, -0.90f), bar2(0.0f, 0.90f)
 {
 }
 
@@ -32,30 +34,30 @@ void PlayState::update(InputHandler inputHandler, int interval)
 		//bar1.moveRight(interval);
 	}
 
-	//gamePlayState = ball.move(interval);
-
-	//if (gamePlayState != NOT_OVER) {
-	//	GameOverState* gameOverState = GameOverState::getInstance(pStateManager_);
-	//	if (gamePlayState == PLAYER1_WINS) {
-	//		gameOverState->setWinner(PLAYER_1);
-	//	}
-	//	else {
-	//		gameOverState->setWinner(PLAYER_2);
-	//	}
-	//	pStateManager_->changeState(gameOverState);
-	//}
+  for (IShape* p_shape : p_shapes_) {
+    p_shape->update();
+  }
 }
 
 void PlayState::draw()
 {
-	glClear(GL_COLOR_BUFFER_BIT);
-	//ball.draw();
-	//bar1.draw();
-	//bar2.draw();
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glLoadIdentity();
+  glTranslatef(0.0, 0.0, -5.0);
+
+  for (IShape* p_shape : p_shapes_) {
+    p_shape->draw();
+  }
 }
 
 void PlayState::enterState(){
-  //ball = Ball::Ball();
-  //bar1 = Bar::Bar(0.0f, -0.90f);
-  //bar2 = Bar::Bar(0.0f, 0.90f);
+  glClearColor(0.0, 0.0, 0.0, 1.0);  //background color and alpha
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  gluPerspective(45, 640.0 / 480.0, 1.0, 500.0);
+  glMatrixMode(GL_MODELVIEW);
+  glEnable(GL_DEPTH_TEST);
+
+
+  p_shapes_.push_front(new Cube(0, 0, 0, 0.5, 0.5, 0.5));
 }

@@ -2,6 +2,9 @@
 #include "InputHandler.h"
 #include "GameState.h"
 #include "StateManager.h"
+#include "IShape.h"
+
+#include <list>
 
 class PlayState : 
 	public GameState
@@ -16,6 +19,6 @@ public:
 protected:
 	PlayState(StateManager* pManager);
 private:
-
+  std::list<IShape*> p_shapes_;
 };
 
