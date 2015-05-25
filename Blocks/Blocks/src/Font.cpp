@@ -5,11 +5,6 @@
 #include <SDL_opengl.h>
 #include <GL\GLU.h>
 
-//int round(double x)
-//{
-//	return (int)(x + 0.5);
-//}
-
 int nextpoweroftwo(int x)
 {
 	double logbase2 = log((float)x) / log(2.0f);

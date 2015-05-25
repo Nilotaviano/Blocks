@@ -37,24 +37,20 @@ void PlayState::update(InputHandler inputHandler, int interval)
     camera.move_right(interval);
   }
   if (inputHandler.isKeyPressed(SDL_SCANCODE_UP)) {
-    //p_shape->inputUp();
     camera.focus_up(interval);
   }
   if (inputHandler.isKeyPressed(SDL_SCANCODE_DOWN)) {
-    //p_shape->inputDown();
     camera.focus_down(interval);
   }
   if (inputHandler.isKeyPressed(SDL_SCANCODE_LEFT)) {
-    //p_shape->inputLeft();
     camera.focus_left(interval);
   }
   if (inputHandler.isKeyPressed(SDL_SCANCODE_RIGHT)) {
-    //p_shape->inputRight();
     camera.focus_right(interval);
   }
 
   for (IShape* p_shape : p_shapes_) {
-    p_shape->update();
+    p_shape->update(interval);
   }
 }
 
@@ -82,7 +78,7 @@ void PlayState::enterState(){
   screenWidth = vPort[2];
   screenHeight = vPort[3];
 
-  glClearColor(1.0, 1.0, 1.0, 1.0);  //background color and alpha
+  glClearColor(1.0, 1.0, 1.0, 1.0);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   gluPerspective(65, screenWidth / screenHeight, 1.0, 500.0);
@@ -91,8 +87,10 @@ void PlayState::enterState(){
 
   p_shapes_.clear();
 
-  for (int i = 0; i < 10000; i++) {
-    p_shapes_.push_front(new Cube((rand() % 100 - 50), (rand() % 100 - 50), (rand() % 100 - 50), 1, 1, 1));
+  for (int i = 0; i < 250; i++) {
+    p_shapes_.push_front(new Cube((rand() % 100 - 50), (rand() % 100 - 50), (rand() % 100 - 50) // Position
+                                  , 1, 1, 1,                                                    // Dimension
+                                  (rand() % 360), (rand() % 360), (rand() % 360)));             // Rotation
   }
 }
 

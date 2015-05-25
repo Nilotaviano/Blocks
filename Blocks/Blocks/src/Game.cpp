@@ -22,10 +22,8 @@ Game::~Game()
 
 bool Game::init()
 {
-	//Initialization flag
 	bool success = true;
 
-	//Initialize SDL
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
 		printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
@@ -56,11 +54,6 @@ bool Game::init()
 			}
 			else
 			{
-				//Use Vsync
-				if (SDL_GL_SetSwapInterval(1) < 0)
-				{
-					printf("Warning: Unable to set VSync! SDL Error: %s\n", SDL_GetError());
-				}
 
 				//Initialize OpenGL
 				if (!initGL())

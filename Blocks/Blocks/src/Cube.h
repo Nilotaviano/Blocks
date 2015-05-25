@@ -5,10 +5,11 @@ class Cube :
 {
 public:
   Cube(float xPos, float yPos, float zPos, float width, float height, float depth);
+  Cube(float xPos, float yPos, float zPos, float width, float height, float depth, float xAngle, float yAngle, float zAngle);
   ~Cube();
 
   void draw();
-  void update();
+  void update(int interval);
 
   void inputUp() { xAngle_ -= 0.45f; }
   void inputDown() { xAngle_ += 0.45f; }

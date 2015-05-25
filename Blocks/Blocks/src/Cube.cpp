@@ -2,10 +2,17 @@
 
 #include <SDL_opengl.h>
 #include <GL\GLU.h>
+#include <random>
 
 
 Cube::Cube(float xPos, float yPos, float zPos, float width, float height, float depth)
 : IShape(xPos, yPos, zPos, width, height, depth)
+{
+
+}
+
+Cube::Cube(float xPos, float yPos, float zPos, float width, float height, float depth, float xAngle, float yAngle, float zAngle)
+: IShape(xPos, yPos, zPos, width, height, depth, xAngle, yAngle, zAngle)
 {
 
 }
@@ -30,20 +37,18 @@ void Cube::draw()
   glVertex3f(-0.5, 0.5, 0.5);
   glVertex3f(-0.5, -0.5, 0.5);
   glVertex3f(0.5, -0.5, 0.5);
+  // back face
+  glVertex3f(0.5, 0.5, -0.5);
+  glVertex3f(-0.5, 0.5, -0.5);
+  glVertex3f(-0.5, -0.5, -0.5);
+  glVertex3f(0.5, -0.5, -0.5);
   // left face
   glColor3f(0.0, 1.0, 0.0);
   glVertex3f(-0.5, 0.5, 0.5);
   glVertex3f(-0.5, -0.5, 0.5);
   glVertex3f(-0.5, -0.5, -0.5);
   glVertex3f(-0.5, 0.5, -0.5);
-  // back face
-  glColor3f(1.0, 0.0, 0.0);
-  glVertex3f(0.5, 0.5, -0.5);
-  glVertex3f(-0.5, 0.5, -0.5);
-  glVertex3f(-0.5, -0.5, -0.5);
-  glVertex3f(0.5, -0.5, -0.5);
   // right face
-  glColor3f(0.0, 1.0, 0.0);
   glVertex3f(0.5, 0.5, 0.5);
   glVertex3f(0.5, -0.5, 0.5);
   glVertex3f(0.5, -0.5, -0.5);
@@ -55,7 +60,6 @@ void Cube::draw()
   glVertex3f(-0.5, 0.5, -0.5);
   glVertex3f(0.5, 0.5, -0.5);
   // bottom face
-  glColor3f(0.0, 0.0, 1.0);
   glVertex3f(0.5, -0.5, 0.5);
   glVertex3f(-0.5, -0.5, 0.5);
   glVertex3f(-0.5, -0.5, -0.5);
@@ -65,7 +69,9 @@ void Cube::draw()
   glPopMatrix();
 }
 
-void Cube::update()
+void Cube::update(int interval)
 {
-  
+  xAngle_ += 0.1f * interval;
+  yAngle_ += 0.1f * interval;
+  zAngle_ += 0.1f * interval;
 }
