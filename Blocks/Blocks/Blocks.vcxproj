@@ -95,6 +95,7 @@
     <ClCompile Include="src\MenuState.cpp" />
     <ClCompile Include="src\PlayState.cpp" />
     <ClCompile Include="src\StateManager.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Button.h" />
@@ -109,6 +110,7 @@
     <ClInclude Include="src\MenuState.h" />
     <ClInclude Include="src\PlayState.h" />
     <ClInclude Include="src\StateManager.h" />
+    <ClInclude Include="src\Texture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
