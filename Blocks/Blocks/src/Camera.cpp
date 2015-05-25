@@ -7,6 +7,7 @@
 
 Camera::Camera()
 {
+  horizontalAngle_ = 0;
   xPos_ = 0;
   yPos_ = 0;
   zPos_ = 5;
