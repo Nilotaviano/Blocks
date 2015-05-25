@@ -6,6 +6,11 @@ class Cube :
 public:
   Cube(float xPos, float yPos, float zPos, float width, float height, float depth);
   Cube(float xPos, float yPos, float zPos, float width, float height, float depth, float xAngle, float yAngle, float zAngle);
+  Cube(float xPos, float yPos, float zPos,
+       float width, float height, float depth,
+       float xAngle, float yAngle, float zAngle,
+       float xRotationRatio, float yRotationRatio, float zRotationRatio);
+
   ~Cube();
 
   void draw();

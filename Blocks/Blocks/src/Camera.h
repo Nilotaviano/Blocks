@@ -7,15 +7,15 @@ public:
 
   void look();
 
-  void move_up(int interval);
-  void move_down(int interval);
-  void move_left(int interval);
-  void move_right(int interval);
+  void moveUp(int interval);
+  void moveDown(int interval);
+  void moveLeft(int interval);
+  void moveRight(int interval);
 
-  void focus_up(int interval);
-  void focus_down(int interval);
-  void focus_left(int interval);
-  void focus_right(int interval);
+  void focusUp(int interval);
+  void focusDown(int interval);
+  void focusLeft(int interval);
+  void focusRight(int interval);
 
 private:
   float xPos_, yPos_, zPos_;

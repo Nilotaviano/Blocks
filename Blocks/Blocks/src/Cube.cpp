@@ -17,6 +17,18 @@ Cube::Cube(float xPos, float yPos, float zPos, float width, float height, float 
 
 }
 
+Cube::Cube(float xPos, float yPos, float zPos,
+           float width, float height, float depth,
+           float xAngle, float yAngle, float zAngle,
+           float xRotationRatio, float yRotationRatio, float zRotationRatio)
+ : IShape(xPos, yPos, zPos,
+          width, height, depth,
+          xAngle, yAngle, zAngle,
+          xRotationRatio, yRotationRatio, zRotationRatio)
+{
+
+}
+
 Cube::~Cube()
 {
 }
@@ -71,7 +83,7 @@ void Cube::draw()
 
 void Cube::update(int interval)
 {
-  xAngle_ += 0.1f * interval;
-  yAngle_ += 0.1f * interval;
-  zAngle_ += 0.1f * interval;
+  xAngle_ += xRotationRatio_ * interval;
+  yAngle_ += yRotationRatio_ * interval;
+  zAngle_ += zRotationRatio_ * interval;
 }

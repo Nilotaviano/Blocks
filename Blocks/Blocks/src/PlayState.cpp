@@ -25,28 +25,28 @@ PlayState* PlayState::getInstance(StateManager* pManager)
 void PlayState::update(InputHandler inputHandler, int interval)
 {
   if (inputHandler.isKeyPressed(SDL_SCANCODE_W)) {
-    camera.move_up(interval);
+    camera.moveUp(interval);
   }
   if (inputHandler.isKeyPressed(SDL_SCANCODE_S)) {
-    camera.move_down(interval);
+    camera.moveDown(interval);
   }
   if (inputHandler.isKeyPressed(SDL_SCANCODE_A)) {
-    camera.move_left(interval);
+    camera.moveLeft(interval);
   }
   if (inputHandler.isKeyPressed(SDL_SCANCODE_D)) {
-    camera.move_right(interval);
+    camera.moveRight(interval);
   }
   if (inputHandler.isKeyPressed(SDL_SCANCODE_UP)) {
-    camera.focus_up(interval);
+    camera.focusUp(interval);
   }
   if (inputHandler.isKeyPressed(SDL_SCANCODE_DOWN)) {
-    camera.focus_down(interval);
+    camera.focusDown(interval);
   }
   if (inputHandler.isKeyPressed(SDL_SCANCODE_LEFT)) {
-    camera.focus_left(interval);
+    camera.focusLeft(interval);
   }
   if (inputHandler.isKeyPressed(SDL_SCANCODE_RIGHT)) {
-    camera.focus_right(interval);
+    camera.focusRight(interval);
   }
 
   for (IShape* p_shape : p_shapes_) {
@@ -87,10 +87,11 @@ void PlayState::enterState(){
 
   p_shapes_.clear();
 
-  for (int i = 0; i < 250; i++) {
-    p_shapes_.push_front(new Cube((rand() % 100 - 50), (rand() % 100 - 50), (rand() % 100 - 50) // Position
-                                  , 1, 1, 1,                                                    // Dimension
-                                  (rand() % 360), (rand() % 360), (rand() % 360)));             // Rotation
+  for (int i = 0; i < 5000; i++) {
+    p_shapes_.push_front(new Cube((rand() % 100 - 50), (rand() % 100 - 50), (rand() % 100 - 50)                   // Position
+                                  , 1, 1, 1,                                                                      // Dimension
+                                  (rand() % 360), (rand() % 360), (rand() % 360),                                 // Angles of rotation
+                                  (float(rand() % 5) / 10), (float(rand() % 5) / 10), (float(rand() % 5) / 10))); // Rotation Ratio
   }
 }
 
@@ -102,7 +103,7 @@ void PlayState::resize()
   screenWidth = vPort[2];
   screenHeight = vPort[3];
 
-  glClearColor(1.0, 1.0, 1.0, 1.0);  //background color and alpha
+  glClearColor(1.0, 1.0, 1.0, 1.0);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   gluPerspective(65, screenWidth / screenHeight, 1.0, 500.0);

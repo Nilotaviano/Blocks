@@ -27,52 +27,52 @@ void Camera::look()
     0, 1, 0); // positive Y up vector
 }
 
-void Camera::move_up(int interval)
+void Camera::moveUp(int interval)
 {
   xPos_ += xFocus_ * 0.01f * interval;
   zPos_ += zFocus_ * 0.01f * interval;
 }
 
-void Camera::move_down(int interval)
+void Camera::moveDown(int interval)
 {
   xPos_ -= xFocus_ * 0.01f * interval;
   zPos_ -= zFocus_ * 0.01f * interval;
 }
 
-void Camera::move_left(int interval)
+void Camera::moveLeft(int interval)
 {
   xPos_ += zFocus_ * 0.01f * interval;
   zPos_ -= xFocus_ * 0.01f * interval;
 }
 
-void Camera::move_right(int interval)
+void Camera::moveRight(int interval)
 {
   xPos_ -= zFocus_ * 0.01f * interval;
   zPos_ += xFocus_ * 0.01f * interval;
 }
 
-void Camera::focus_up(int interval)
+void Camera::focusUp(int interval)
 {
   if (yFocus_ < 1) {
     yFocus_ += 0.0025f * interval;
   }
 }
 
-void Camera::focus_down(int interval)
+void Camera::focusDown(int interval)
 {
   if (yFocus_ > -1) {
     yFocus_ -= 0.0025f * interval;
   }
 }
 
-void Camera::focus_left(int interval)
+void Camera::focusLeft(int interval)
 {
   horizontalAngle_ -= 0.0025f * interval;
   xFocus_ = sin(horizontalAngle_);
   zFocus_ = -cos(horizontalAngle_);
 }
 
-void Camera::focus_right(int interval)
+void Camera::focusRight(int interval)
 {
   horizontalAngle_ += 0.0025f * interval;
   xFocus_ = sin(horizontalAngle_);
