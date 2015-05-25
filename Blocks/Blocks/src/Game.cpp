@@ -84,9 +84,6 @@ bool Game::initGL()
   SDL_GetWindowSize(pSDLWindow_, &x, &y);
   glViewport(0, 0, x, y);
 
-	glBlendFunc(GL_SRC_COLOR, GL_ONE_MINUS_SRC_ALPHA);
-	glEnable(GL_BLEND);
-
 	//Initialize Projection Matrix
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -161,6 +158,8 @@ void Game::resize()
 
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
+  
+  pStateManager_->resize();
 }
 
 void Game::run() {

@@ -3,6 +3,7 @@
 #include "GameState.h"
 #include "StateManager.h"
 #include "IShape.h"
+#include "Camera.h"
 
 #include <list>
 
@@ -15,10 +16,12 @@ public:
 	void draw();
 	static PlayState* getInstance(StateManager* pManager);
   void enterState();
+  void resize();
 
 protected:
 	PlayState(StateManager* pManager);
 private:
   std::list<IShape*> p_shapes_;
+  Camera camera;
 };
 

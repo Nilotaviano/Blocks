@@ -31,7 +31,7 @@ void GameOverState::update(InputHandler inputHandler, int interval)
 {
 	timeBuffer_ += interval;
 
-	if (inputHandler.isKeyPressed(SDLK_RETURN)) {
+	if (inputHandler.isKeyPressed(SDL_SCANCODE_RETURN)) {
 		if (playAgainButton_.selected) {
 			pStateManager_->changeState(PlayState::getInstance(pStateManager_));
 		}
@@ -41,7 +41,7 @@ void GameOverState::update(InputHandler inputHandler, int interval)
 	}
 
 	if (timeBuffer_ > 150) {
-		if (inputHandler.isKeyPressed(SDLK_a)) {
+    if (inputHandler.isKeyPressed(SDL_SCANCODE_A) || inputHandler.isKeyPressed(SDL_SCANCODE_LEFT)) {
 			if (playAgainButton_.selected) {
 				playAgainButton_.selected = false;
 				menuButton_.selected = true;
@@ -53,7 +53,7 @@ void GameOverState::update(InputHandler inputHandler, int interval)
 			timeBuffer_ = 0;
 		}
 
-		if (inputHandler.isKeyPressed(SDLK_d)) {
+    if (inputHandler.isKeyPressed(SDL_SCANCODE_D) || inputHandler.isKeyPressed(SDL_SCANCODE_RIGHT)) {
 			if (playAgainButton_.selected) {
 				playAgainButton_.selected = false;
 				menuButton_.selected = true;

@@ -31,6 +31,15 @@ MenuState* MenuState::getInstance(StateManager* pManager)
 
 void MenuState::enterState()
 {
+  glBlendFunc(GL_SRC_COLOR, GL_ONE_MINUS_SRC_ALPHA);
+  glEnable(GL_BLEND);
+
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
+
   timeBuffer_ = -150; //This is to avoid instantly selecting "Play" upon going from GameOverState to this
 }
 
@@ -39,7 +48,7 @@ void MenuState::update(InputHandler inputHandler, int interval)
   timeBuffer_ += interval;
 
   if (timeBuffer_ >= 0) {
-    if (inputHandler.isKeyPressed(SDLK_RETURN)) {
+    if (inputHandler.isKeyPressed(SDL_SCANCODE_RETURN)) {
       if (playButton_.selected) {
         pStateManager_->changeState(PlayState::getInstance(pStateManager_));
       }
@@ -53,7 +62,7 @@ void MenuState::update(InputHandler inputHandler, int interval)
   }
 
   if (timeBuffer_ > 150) {
-    if (inputHandler.isKeyPressed(SDLK_w)) {
+    if (inputHandler.isKeyPressed(SDL_SCANCODE_W) || inputHandler.isKeyPressed(SDL_SCANCODE_UP)) {
       if (playButton_.selected) {
         playButton_.selected = false;
         quitButton_.selected = true;
@@ -69,7 +78,7 @@ void MenuState::update(InputHandler inputHandler, int interval)
       timeBuffer_ = 0;
     }
 
-    if (inputHandler.isKeyPressed(SDLK_s)) {
+    if (inputHandler.isKeyPressed(SDL_SCANCODE_S) || inputHandler.isKeyPressed(SDL_SCANCODE_DOWN)) {
       if (playButton_.selected) {
         playButton_.selected = false;
         optionsButton_.selected = true;
@@ -94,4 +103,16 @@ void MenuState::draw()
   playButton_.draw();
   optionsButton_.draw();
   quitButton_.draw();
+}
+
+void MenuState::resize()
+{
+  glBlendFunc(GL_SRC_COLOR, GL_ONE_MINUS_SRC_ALPHA);
+  glEnable(GL_BLEND);
+
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
 }

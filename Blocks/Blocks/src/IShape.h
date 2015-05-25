@@ -8,9 +8,13 @@ public:
   virtual void draw() {}
   virtual void update() {}
 
+  virtual void inputUp() {}
+  virtual void inputDown() {}
+  virtual void inputLeft() {}
+  virtual void inputRight() {}
+
 protected:
   float xPos_, yPos_, zPos_;
   float width_, height_, depth_;
-  float angle_;
+  float xAngle_, yAngle_;
 };
-

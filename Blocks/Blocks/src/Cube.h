@@ -9,5 +9,9 @@ public:
 
   void draw();
   void update();
-};
 
+  void inputUp() { xAngle_ -= 0.45; }
+  void inputDown() { xAngle_ += 0.45; }
+  void inputLeft() { yAngle_ -= 0.45; }
+  void inputRight() { yAngle_ += 0.45; }
+};

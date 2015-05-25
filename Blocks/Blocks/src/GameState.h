@@ -11,6 +11,7 @@ public:
 	~GameState();
 	virtual void draw() {}
 	virtual void update(InputHandler inputHandler, int interval) {}
+  virtual void resize() {}
 	void changeState(GameState* pNewGameState);
 	virtual void leaveState() {}
   virtual void enterState() {}

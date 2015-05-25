@@ -10,6 +10,7 @@ public:
 
 	void update(InputHandler inputHandler, int interval);
 	void draw();
+  void resize();
 	void changeState(GameState* pNewState);
 	void quit();
 	GameState* getActiveState() { return pActiveState_; }

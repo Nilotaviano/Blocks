@@ -38,7 +38,12 @@ void StateManager::draw()
 	}
 }
 
-void StateManager::quit() 
+void StateManager::resize()
+{
+  pActiveState_->resize();
+}
+
+void StateManager::quit()
 {
 	*quit_ = true;
 }

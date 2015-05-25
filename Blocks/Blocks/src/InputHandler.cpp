@@ -43,17 +43,14 @@ void InputHandler::handleInput(SDL_Event event)
 
 void InputHandler::handleKeyboard(SDL_KeyboardEvent kbEvent)
 {
-  int key = kbEvent.keysym.sym;
 
-  if (key < KEYBOARD_SIZE) {
-    switch (kbEvent.type){
-    case SDL_KEYUP:
-      keys_[kbEvent.keysym.sym] = false;
-      break;
-    case SDL_KEYDOWN:
-      keys_[kbEvent.keysym.sym] = true;
-      break;
-    }
+  switch (kbEvent.type){
+  case SDL_KEYUP:
+    keys_[kbEvent.keysym.scancode] = false;
+    break;
+  case SDL_KEYDOWN:
+    keys_[kbEvent.keysym.scancode] = true;
+    break;
   }
 }
 

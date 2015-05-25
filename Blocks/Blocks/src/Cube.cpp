@@ -16,50 +16,56 @@ Cube::~Cube()
 
 void Cube::draw()
 {
-  float size = 1.0;
-  glRotatef(angle_, 1.0, 1.0, 1.0);   // angle, x-axis, y-axis, z-axis
+  glPushMatrix();
+
+  glTranslatef(xPos_, yPos_, zPos_);
+  glRotatef(xAngle_, 1.0, 0.0, 0.0);
+  glRotatef(yAngle_, 0.0, 1.0, 0.0);
+  glScalef(width_, height_, depth_);
 
   glBegin(GL_QUADS);
   // front face
   glColor3f(1.0, 0.0, 0.0);
-  glVertex3f(size / 2, size / 2, size / 2);
-  glVertex3f(-size / 2, size / 2, size / 2);
-  glVertex3f(-size / 2, -size / 2, size / 2);
-  glVertex3f(size / 2, -size / 2, size / 2);
+  glVertex3f(0.5, 0.5, 0.5);
+  glVertex3f(-0.5, 0.5, 0.5);
+  glVertex3f(-0.5, -0.5, 0.5);
+  glVertex3f(0.5, -0.5, 0.5);
   // left face
   glColor3f(0.0, 1.0, 0.0);
-  glVertex3f(-size / 2, size / 2, size / 2);
-  glVertex3f(-size / 2, -size / 2, size / 2);
-  glVertex3f(-size / 2, -size / 2, -size / 2);
-  glVertex3f(-size / 2, size / 2, -size / 2);
+  glVertex3f(-0.5, 0.5, 0.5);
+  glVertex3f(-0.5, -0.5, 0.5);
+  glVertex3f(-0.5, -0.5, -0.5);
+  glVertex3f(-0.5, 0.5, -0.5);
   // back face
-  glColor3f(0.0, 0.0, 1.0);
-  glVertex3f(size / 2, size / 2, -size / 2);
-  glVertex3f(-size / 2, size / 2, -size / 2);
-  glVertex3f(-size / 2, -size / 2, -size / 2);
-  glVertex3f(size / 2, -size / 2, -size / 2);
+  glColor3f(1.0, 0.0, 0.0);
+  glVertex3f(0.5, 0.5, -0.5);
+  glVertex3f(-0.5, 0.5, -0.5);
+  glVertex3f(-0.5, -0.5, -0.5);
+  glVertex3f(0.5, -0.5, -0.5);
   // right face
-  glColor3f(1.0, 1.0, 0.0);
-  glVertex3f(size / 2, size / 2, size / 2);
-  glVertex3f(size / 2, -size / 2, size / 2);
-  glVertex3f(size / 2, -size / 2, -size / 2);
-  glVertex3f(size / 2, size / 2, -size / 2);
+  glColor3f(0.0, 1.0, 0.0);
+  glVertex3f(0.5, 0.5, 0.5);
+  glVertex3f(0.5, -0.5, 0.5);
+  glVertex3f(0.5, -0.5, -0.5);
+  glVertex3f(0.5, 0.5, -0.5);
   // top face
-  glColor3f(1.0, 0.0, 1.0);
-  glVertex3f(size / 2, size / 2, size / 2);
-  glVertex3f(-size / 2, size / 2, size / 2);
-  glVertex3f(-size / 2, size / 2, -size / 2);
-  glVertex3f(size / 2, size / 2, -size / 2);
+  glColor3f(0.0, 0.0, 1.0);
+  glVertex3f(0.5, 0.5, 0.5);
+  glVertex3f(-0.5, 0.5, 0.5);
+  glVertex3f(-0.5, 0.5, -0.5);
+  glVertex3f(0.5, 0.5, -0.5);
   // bottom face
-  glColor3f(0.0, 1.0, 1.0);
-  glVertex3f(size / 2, -size / 2, size / 2);
-  glVertex3f(-size / 2, -size / 2, size / 2);
-  glVertex3f(-size / 2, -size / 2, -size / 2);
-  glVertex3f(size / 2, -size / 2, -size / 2);
+  glColor3f(0.0, 0.0, 1.0);
+  glVertex3f(0.5, -0.5, 0.5);
+  glVertex3f(-0.5, -0.5, 0.5);
+  glVertex3f(-0.5, -0.5, -0.5);
+  glVertex3f(0.5, -0.5, -0.5);
   glEnd();
+
+  glPopMatrix();
 }
 
 void Cube::update()
 {
-  angle_ += 0.1f;
+  
 }
