@@ -24,24 +24,33 @@ PlayState* PlayState::getInstance(StateManager* pManager)
 
 void PlayState::update(InputHandler inputHandler, int interval)
 {
-  bool pressedUp = inputHandler.isKeyPressed(SDL_SCANCODE_W) || inputHandler.isKeyPressed(SDL_SCANCODE_UP);
-  bool pressedDown = inputHandler.isKeyPressed(SDL_SCANCODE_S) || inputHandler.isKeyPressed(SDL_SCANCODE_DOWN);
-  bool pressedLeft = inputHandler.isKeyPressed(SDL_SCANCODE_A) || inputHandler.isKeyPressed(SDL_SCANCODE_LEFT);
-  bool pressedRight = inputHandler.isKeyPressed(SDL_SCANCODE_D) || inputHandler.isKeyPressed(SDL_SCANCODE_RIGHT);
-
-  for (IShape* p_shape : p_shapes_) {
-    if (pressedUp) {
-      p_shape->inputUp();
-    }
-    if (pressedDown) {
-      p_shape->inputDown();
-    }
-    if (pressedLeft) {
-      p_shape->inputLeft();
-    }
-    if (pressedRight) {
-      p_shape->inputRight();
-    }
+  if (inputHandler.isKeyPressed(SDL_SCANCODE_W)) {
+    camera.move_up(interval);
+  }
+  if (inputHandler.isKeyPressed(SDL_SCANCODE_S)) {
+    camera.move_down(interval);
+  }
+  if (inputHandler.isKeyPressed(SDL_SCANCODE_A)) {
+    camera.move_left(interval);
+  }
+  if (inputHandler.isKeyPressed(SDL_SCANCODE_D)) {
+    camera.move_right(interval);
+  }
+  if (inputHandler.isKeyPressed(SDL_SCANCODE_UP)) {
+    //p_shape->inputUp();
+    camera.focus_up(interval);
+  }
+  if (inputHandler.isKeyPressed(SDL_SCANCODE_DOWN)) {
+    //p_shape->inputDown();
+    camera.focus_down(interval);
+  }
+  if (inputHandler.isKeyPressed(SDL_SCANCODE_LEFT)) {
+    //p_shape->inputLeft();
+    camera.focus_left(interval);
+  }
+  if (inputHandler.isKeyPressed(SDL_SCANCODE_RIGHT)) {
+    //p_shape->inputRight();
+    camera.focus_right(interval);
   }
 
   for (IShape* p_shape : p_shapes_) {
@@ -82,7 +91,9 @@ void PlayState::enterState(){
 
   p_shapes_.clear();
 
-  p_shapes_.push_front(new Cube(0, 0, 0, 1, 1, 1));
+  for (int i = 0; i < 10000; i++) {
+    p_shapes_.push_front(new Cube((rand() % 100 - 50), (rand() % 100 - 50), (rand() % 100 - 50), 1, 1, 1));
+  }
 }
 
 void PlayState::resize()
